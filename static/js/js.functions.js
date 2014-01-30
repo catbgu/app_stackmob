@@ -17,12 +17,20 @@ $(document).ready(function(){
 	/* Different layout for desktop browsers */
 	var mobile = navigator.userAgent.match(/iPhone|Android|Windows Phone|BlackBerry/i);
 	if(!mobile){
+		//Music.html page
 		$(".row.artist-list").wrapInner("<ul class='medium-block-grid-4 large-block-grid-6'  id='grid' style='width: 100.1%;'></ul>");
 		
 		$(".four.columns.artist-btn").removeClass("four columns artist-btn").addClass("centred").wrap("<li class='element'></li>").prepend("<img class='music-icon' src='../static/img/icons/music-icon-small.png' />");
 		
 		$(".artist-name").wrap("<div class='video-info'></div>");
 		$(".artist-name").wrapInner("<h5></h5>");
+		
+		//Artist.html page
+		$(".row.artist-video-list").wrapInner("<ul class='medium-block-grid-4 large-block-grid-6'  id='grid' style='width: 100.1%;'></ul>");
+		
+		$(".four.columns.artist-video-btn").removeClass("four columns artist-video-btn").addClass("centred").wrap("<li class='element'></li>").prepend("<img class='shop-icon' src='../../../static/img/icons/shop-icon-small.png' />");
+		
+		$(".video-title").wrapInner("<h5></h5>");
 	}
 
 	$(document).foundation(); 
