@@ -17,12 +17,12 @@
 
 html,
 body {
-  font-size: 100%; }
+  font-size: 100%;}
 
 body {
-  background: #D4D4D4;
+  background: #fff;
   color: #222222;
-  padding-bottom: 10px;
+  padding: 0;
   margin: 0;
   font-family: Helvetica;
   font-weight: normal;
@@ -95,7 +95,7 @@ select {
 
 /* Grid HTML Classes */
 .row {
-  width: 100%;
+  width: 52%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
@@ -1010,7 +1010,6 @@ th.hide-for-touch {
 	ul#grid{
 		margin-left: auto;
 		margin-right: auto;
-		padding-top: 5px;
 	}
 	
 	.hover{
@@ -1076,28 +1075,19 @@ th.hide-for-touch {
 		margin-top: -10px;
 	}
 	h5 {
-		font-size: 0.8em;
-		font-weight: bold;
+    font-size: 0.8em;
+    font-weight: bold;
 	}
 	.large-block-grid-6 > li {
 		width: 15.8%;
 		padding-bottom: 30px;
 	}
-	.large-block-grid-6{
-		margin-bottom: 7%;
-	}
-	.music-icon{
-		margin-left: -6px;
-		top: -33px;
-	}
 	.shop-icon{
-		margin-left: -6px;
+		margin-left: -20px;
 		top: -33px;
 	}
 	.main-container{
-		overflow: auto;
 		margin-bottom: -10px;
-		background: #D4D4D4;
 	}
 	.footer{
 		height: 42px;
@@ -1105,22 +1095,6 @@ th.hide-for-touch {
 }
 /* IPAD MINI */
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (-webkit-min-device-pixel-ratio: 1)  {
-	.app-name{
-		top: 5%;
-	}
-	.subheading{
-		top: 0px;
-		height: 5px;
-		line-height: 5px;
-	}
-	.landing-container{
-		padding-top: 0px;
-		margin-top: 0px;
-		height: 0px;
-	}
-	.landing-button-group{
-		top: 0%;
-	}	
 	ul#grid{
 		margin-left: auto;
 		margin-right: auto;
@@ -1136,19 +1110,9 @@ th.hide-for-touch {
 		width: 100%;
 	}	
 }
-/* Fixing Top Slider Size on Mobile */
-@media handheld, only screen and (max-width: 800px) {
-	.row{
-		width: 100%;
-	}
-}
+
 /* IPAD */
 @media only screen and (min-width : 768px) and (max-width : 1024px)  {
-	.landing-container{
-		padding-top: 0px;
-		margin-top: 0px;
-		height: 0px;
-	}	
 	ul#grid{
 		margin-left: auto;
 		margin-right: auto;
@@ -1162,14 +1126,13 @@ th.hide-for-touch {
 		clear: both; }
 	.main-container{
 		margin-bottom: 4%;
-		background: #D4D4D4;
 	} 
 	.row{
 		width: 100%;
 	}	
 }
 /* Desktop Browser-width Half */
-@media only screen and(max-device-width : 1024px)  {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
 	ul#grid{
 		margin-left: auto;
 		margin-right: auto;
@@ -1183,7 +1146,6 @@ th.hide-for-touch {
 		clear: both; }
 	.main-container{
 		margin-bottom: 4%;
-		background: #D4D4D4;
 	} 
 	.row{
 		width: 100%;
@@ -1247,7 +1209,7 @@ a {
 	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 }
 
-.music-icon{
+.shop-icon{
 	position: absolute;
 	z-index: 100;
 	left: 32%;
@@ -1258,22 +1220,6 @@ a {
 	-o-transition: all .5s ease-in-out;
 	transition: all .5s ease-in-out;
 	animation-iteration-count:infinite;
-}
-.shop-icon{
-	position: absolute;
-	z-index: 100;
-	left: 32%;
-	margin-top: 0px;
-	opacity: 0;
-	-webkit-transition: all .5s ease-in-out;
-	-moz-transition: all .5s ease-in-out;
-	-o-transition: all .5s ease-in-out;
-	transition: all .5s ease-in-out;
-	animation-iteration-count:infinite;
-}
-.element:hover .music-icon{
-	opacity: 1;
-
 }
 .element:hover .shop-icon{
 	opacity: 1;
@@ -3109,6 +3055,7 @@ form.custom {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+    cursor: pointer;
     overflow: hidden;
   }
 
@@ -3972,10 +3919,6 @@ form.custom {
     padding-left: 0;
     padding-top: 0; } }
 /* Foundation Alerts */
-.alert-box:first-child{
-  background-color: #FA2D2D;
-  border-color: #EB2D2D;
-}  
 .alert-box {
   border-style: solid;
   border-width: 1px;
@@ -4002,9 +3945,6 @@ form.custom {
   .alert-box.radius {
     -webkit-border-radius: 3px;
     border-radius: 3px; }
-  .alert-box.radius:first-child {
-    -webkit-border-radius: 8px 8px 0 0;
-    border-radius: 8px 8px 0 0; } 	
   .alert-box.round {
     -webkit-border-radius: 1000px;
     border-radius: 1000px; }
@@ -4021,40 +3961,6 @@ form.custom {
     border-color: #d0d0d0;
     color: #505050; }
 
-/*Second Alert Box*/
-/* Foundation Alerts */
-.alert-box2:first-child{
-  background-color: #FA2D2D;
-}  
-.alert-box2 {
-  border-style: solid;
-  border-width: 1px;
-  display: block;
-  font-weight: bold;
-  margin-bottom: 1.25em;
-  position: relative;
-  padding: 0.6875em 1.3125em 0.75em 0.6875em;
-  font-size: 0.875em;
-  background-color: #2ba6cb;
-  border-color: #2284a1;
-  color: white; }
-  .alert-box2 .close {
-    font-size: 1.375em;
-    padding: 5px 4px 4px;
-    line-height: 0;
-    position: absolute;
-    top: 0.4375em;
-    right: 0.3125em;
-    color: #333333;
-    opacity: 0.3; }
-    .alert-box2 .close:hover, .alert-box2 .close:focus {
-      opacity: 0.5; }
-  .alert-box2.radius {
-    -webkit-border-radius: 3px;
-    border-radius: 3px; }
-  .alert-box2.radius:first-child {
-    -webkit-border-radius: 8px 8px 0 0;
-    border-radius: 8px 8px 0 0; } 	
 /* Breadcrumbs */
 .breadcrumbs {
   display: block;
@@ -4199,16 +4105,11 @@ ul.pagination {
   left: 0;
 }
 .poster-slideshow, .poster-slideshow:after {
-	position: fixed;
     width: 100%;
     height: 100%;
     top: 0px;
     left: 0px;
-    z-index: 0;
-}
-.poster-slideshow:after {
-    content: '';
-    background: transparent url(../img/pattern.png) repeat top left;
+    z-index: 4;
 }
 .poster-slideshow li span {
     width: 100%;
@@ -4409,31 +4310,12 @@ ul.pagination {
   -webkit-text-size-adjust: none;
   color: #fff;
 }
-@media all and (max-width: 800px) {      
-	.landing-container{
-		padding-top: 0px;
-		margin-top: 0px;
-		height: 0px;
-	}	
- 
-}
-@media only screen and (max-width: 1280px) and (orientation:landscape) {
-	.app-name{
-		top: 5%;
-	}
-	.subheading{
-		top: 0px;
-		height: 5px;
-		line-height: 5px;
-	}
-	.landing-container{
-		padding-top: 0px;
-		margin-top: 0px;
-		height: 0px;
-	}
-	.landing-button-group{
-		top: 0%;
-	}
+@media all and (device-width: 768px) {      
+  .app-name { 
+    left: 0;
+    font-size: 106px; 
+    margin-bottom: 16px;
+  }               
 }
 .subheading{
   font-size: 18px;
@@ -4441,7 +4323,6 @@ ul.pagination {
   text-align: center;
   width: 80%;
   margin: auto;
-  padding-top: 5px;
   z-index: 5;
   position: relative;
   line-height: 19px;
@@ -4509,7 +4390,7 @@ ul.pagination {
   margin-left: -10px;
   margin-top: -13px;
   position: absolute;
-  top: 60%;
+  top: 50%;
   width: 26px;  
 }
 /*.landing-button:after{
@@ -4584,7 +4465,7 @@ ul.pagination {
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;    
 }
-.email-login-container input:nth-child(2):focus{
+.email-login-container input:first-child:focus{
   border-radius: 8px 8px 0 0;
   -webkit-border-radius: 8px 8px 0 0;
   -moz-border-radius: 8px 8px 0 0;
@@ -4651,17 +4532,12 @@ ul.pagination {
   margin-top: 6px;
 }
 .landing-footer{
-  width:100%; 
-  position: fixed;
-  height: 25px;
-  padding-top: 5px;
-  bottom: 0;
+  position: absolute;
+  bottom: 2.5%;
   color: #FFFFFF;
   font-size: 14px; 
   width: 100%;
   z-index: 2;
-  background: rgba(0, 0, 0, .8);
-  color: #fff;
 }
 .landing-footer-message{
   position: absolute;
@@ -4774,12 +4650,6 @@ ul.pagination {
   top: 1px;
   right: 2px;
   position: absolute;
-}
-#cover {
-    background: url("http://www.thestranger.com/foundation/images/loaders/spinner-trans.gif") no-repeat scroll center center #FFF;
-    position: absolute;
-    height: 100%;
-    width: 100%;
 }
 /*END landing page*/
 .product-buttons{
@@ -4943,10 +4813,6 @@ ul.pagination {
   text-decoration: none;
   font-weight: bold; 
 }
-.video-title h5{
-	text-align: center;
-	margin-bottom: 0px;
-}	
 .artist-video-btn .artist-name{
   padding-left: 15px;
   line-height: 15px;
@@ -5597,6 +5463,7 @@ a.th {
   border: 1px solid #ebebeb;
   z-index: 0;
 }
+
 .artist-btn .artist-name{
   color: #000000;
   text-decoration: none;
@@ -5893,15 +5760,7 @@ a.th {
   -o-animation-name: fadeInUp;
   animation-name: fadeInUp;
 }
-/* To Solve an iPhone issue */
-@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
-	.main-container{
-		overflow: hidden;
-		-webkit-overflow-scrolling: touch;
-	}
-} 
 
-}
 .main-container{
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -5911,9 +5770,9 @@ a.th {
   position:absolute;
   top:0;
   right:0;
-  bottom:55px;
+  bottom:0;
   left:0;
-}
+} 
 
 /*page loading spinner*/
 .spinner-wrap{
@@ -5949,7 +5808,10 @@ a.th {
       transition: .2s ease-in-out all;
       -webkit-transition: .2s ease-in-out all;
       -moz-transition: .2s ease-in-out all;
-    }
+	  /*-webkit-box-shadow: 0px -2px 3px 1px rgba(0,0,0,0.1);
+	  -moz-box-shadow: 0px -2px 3px 1px rgba(0,0,0,0.1);
+	  box-shadow: 0px -2px 3px 1px rgba(0,0,0,0.1);*/
+	}
     a.footer-bookmarks {
       width:70px;
       right: 70px;
@@ -6042,8 +5904,6 @@ a.th {
       display:block;
     }
 
-
-
 /*SETTINGS TAB*/
 .screen {
 /*  height: 568px; 
@@ -6051,6 +5911,7 @@ a.th {
   position: absolute;
   top: 0; 
   left: 0;*/
+  height: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -6364,12 +6225,6 @@ a.th {
   float: right;
   font-size: 14px;
 }
-.settings-logout-user{
-  padding: 20px;
-  right: 0;
-  float: right;
-  font-size: 14px;
-}
 .settings-footer{
   position: absolute;
   bottom: 0;
@@ -6384,6 +6239,7 @@ a.th {
     font-size: 12px;
   }
 }
+
 /*BOOKMARKS & FOLLOWING TAB*/      
 #footer-container{
     position:absolute;
@@ -6489,13 +6345,10 @@ a.th {
 }
 
 /*retailer iframe*/
-#footer-container{
-  width: 100%;
-  overflow: hidden;
-}
 #footer-container-iframe{
   width: 100%;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   border: none;
 }
