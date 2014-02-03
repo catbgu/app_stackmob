@@ -4458,11 +4458,17 @@ ul.pagination {
 @media only screen and (max-width: 1280px) and (orientation:landscape) {
 	.app-name{
 		top: 0px;
-		height: 25%;
+		height: 5%;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+		font-size: 48px;
 	}
-	.subheading h2{
-		top: 0px;
+	.subheading{
+		top: -155px;
 		line-height: 0px;
+	}
+	h2{
+		font-size: 14px;
 	}
 	.landing-container{
 		padding-top: 0px;
@@ -4472,6 +4478,10 @@ ul.pagination {
 	.landing-button-group{
 		top: 0%;
 	}
+	.landing-button-group.small-10.large-5.columns, .email-login-container.small-10.large-5.columns, .email-reset-passwd-container.small-10.large-5.columns{
+		top: 35%;
+	}
+	
 }
 .subheading{
   font-size: 18px;
