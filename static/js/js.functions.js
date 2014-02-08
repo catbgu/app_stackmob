@@ -33,7 +33,7 @@ $(document).ready(function(){
 		$(".video-title").wrapInner("<h5></h5>");
 	}
 
-	$(document).foundation(); 
+	//$(document).foundation(); 
 	//Define Click Event for Mobile
 	if( 'ontouchstart' in window ){ 
 		var click = 'singleTap'; 
@@ -41,10 +41,10 @@ $(document).ready(function(){
 		var click = 'click';
 	}	
 
-    $("#spinner").css('top', screenHeight/2+10);
+    //$("#spinner").css('top', screenHeight/2+10);
 
 	window.onload = function(){
-	  $(".spinner-wrap").fadeOut(50);
+	  //$(".spinner-wrap").fadeOut(50);
 	  $(".footer").fadeIn(100);
 	};  	
 

@@ -9,14 +9,13 @@
     version: '4.2.0',
 
     settings: {
-      timer_speed: 4000,
+      timer_speed: 0,
       pause_on_hover: false,
       resume_on_mouseout: false,
       animation_speed: 300,
       bullets: false,
       stack_on_small: true,
-      navigation_arrows: false,
-      slide_number: false,
+      navigation_arrows: true,
       container_class: 'orbit-container',
       stack_on_small_class: 'orbit-stack-on-small',
       next_class: 'orbit-next',
