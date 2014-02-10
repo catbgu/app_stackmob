@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" manifest="../../inspired.appcache"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" manifest="../../inspired.appcache"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -34,6 +34,7 @@
   
   <!-- Style CSS -->
   <link rel="stylesheet" href="../../../static/css/foundation.css" />
+  <link rel="stylesheet" href="../../../static/css/common.css" />
 </head>
 <body>
   <div class="screen">
@@ -84,9 +85,8 @@
 				  <div class="look-title">Look 1</div>
 			  </div>
 			  
-			<div class = 'responsiveHeight'>
-				<div class = 'inner'>
-				  <div class = 'iosSlider'>
+		
+				  <div class = 'short-width-slider'>
 					<div class = 'slider'> 
 					
 							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
@@ -111,16 +111,14 @@
 						
 					</div>	
 				</div>
-			</div>
-			</div>	
+			
 
 			  <div class="look-separator">
 				  <div class="look-title">Look 2</div>
 			  </div>
 			  
-			<div class = 'responsiveHeight'>
-				<div class = 'inner'>
-				  <div class = 'iosSlider'>
+
+				  <div class = 'short-width-slider'>
 					<div class = 'slider'> 
 				
 							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
@@ -165,8 +163,7 @@
 							
 					</div>
 				  </div>	
-				</div>
-			</div>       
+			     
 			</div>                    
             </div>
 			</div>
@@ -192,51 +189,18 @@
   <!--script src="../../../static/js/foundation/foundation.js"></script>-->
   <script src="../../../static/js/js.functions.js"></script>
   <script src="../../../static/js/fastclick.js"></script>
+  <script src="../../../static/js/common.js"></script>
   
 	
 	
 	<!-- iosSlider plugin -->
 	<script src = "../../../static/js/jquery.iosslider.js"></script>
 			<style type="text/css">
-			.responsiveHeight {
-				height: 0;
-				padding: 0 0 26% 0; /* responsive slider height = 26% of the browser width */
-				position: relative;
-				overflow: visible;
-			}
-			
-			.responsiveHeight > .inner {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				
-			}
-			
-			.iosSlider {
-				padding-left: 20px;
-				width: 105%;
-				height: 100%;
-				
-			}
-			
-			.iosSlider .slider {
-				width: 100%;
-				height: 100%;
-			}
-			
-			.iosSlider .slider .item {
-				position: relative;
-				top: 0;
-				left: 0;
-				width: 23%;
-				height: 100%;
-				margin: 5px -10px 5px -10px;
-			}
-			
-			.iosSlider .slider .item img {
+
+			.slider .item img {
 				float: left;
-				width: 65%;
-				margin-top: 5px;
+				width: 50%;
+				margin: 10px;
 				-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
@@ -244,23 +208,35 @@
 		</style>
 	<script type="text/javascript">
 			$(document).ready(function() {
+				
+				$('.short-width-slider').iosSlider({
+					scrollbar: false,
+					desktopClickDrag: true,
+					snapToChildren: true,
+					snapVelocityThreshold: 1,
+					horizontalSlideLockThreshold: 5
+				});
 			
-				$('.iosSlider').iosSlider({
+				/*$('.iosSlider').iosSlider({
 					scrollbar: false,
 					snapToChildren: true,
 					desktopClickDrag: true,
 					navPrevSelector: $('.prevButton'),
 					navNextSelector: $('.nextButton'),
 					desktopClickDrag: true
-				});
+				});*/
 				
 				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
-					$('.responsiveHeight').css('padding','0 0 45% 0');
-					$('.item').css('padding-left','10px');
-					$('.item').css('padding-right','10px');
 					$('iframe').css('height','200px');
+					$('.item ').css('margin-right','-100px');
+
 				}
+				
+				$('.item').on('click', function(e){
+					e.stopImmediatePropagation();
+					e.preventDefault();
+				});	
 			});
 		</script>
 	
