@@ -2918,7 +2918,8 @@ form.custom {
   position: fixed;
   width: 100%;
   display: block;
-  z-index: 1000;  
+  z-index: 255; 
+  
  }
     .top-bar .name{
       line-height: 44px;
@@ -2986,6 +2987,7 @@ form.custom {
   }
   .video-poster{
     padding-top:44px;
+	z-index: 0;
   }  
   .looks-container{
     padding-left: 12px;
@@ -6477,7 +6479,7 @@ a.th {
     -webkit-transform: translateZ(0); 
 }
 #footer-container.move-down-final { 
-    top: 1200px; 
+    top: 1200px;
     opacity: .5;
 }
 @keyframes fadeOut {
@@ -6552,7 +6554,7 @@ a.th {
 /*retailer iframe*/
 #footer-container{
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* -----------------iosSlider Css-------------------------------------- */
@@ -7004,7 +7006,7 @@ p {
 .short-width-slider-2 {
 	position: relative;
 	overflow: hidden;
-	width: 900px;
+	width: 910px;
 	height: 220px; 
 }
 
@@ -7012,6 +7014,7 @@ p {
 .short-width-slider-2 .slider,
 .short-width-slider-3 .slider {
 	height: 100%;
+	margin-left: 3%;
 }
 
 .short-width-slider .slider .item {
@@ -7019,30 +7022,38 @@ p {
 	max-width: 250px;
 	height: 100%;
 }
-@media only screen and (min-device-width : 320px) and (max-device-width : 1024px) {
 
-	.short-width-slider .slider .item {
-		margin-right: -100px;
-		max-width: 250px;
-		height: 100%;
+/* ----- Mobile ------*/
+@media only screen and (max-width: 40em) {
+	.short-width-slider-2 .slider{
+		right: 125px;
 	}
 	.short-width-slider-2 .slider .item {
-		margin-right: -100px;
-		max-width: 250px;
+		/*margin-left: -48px;
+		margin-right: -48px;*/
+		margin-top: 35px;
+		width: 200px;
 		height: 100%;
 	}
-
+	.short-width-slider-2 .slider .item  img{
+		margin: 0px;
+		width: 100%;
+	}
 }
 
-.short-width-slider-2 .prev {
-	position: absolute;
-	top: 79px;
-	left: 10px;
-	width: 40px;
-	height: 40px;
-	background: url(../img/slider-buttons.png) no-repeat 20px 0;
-}
-
+/* ----iPAD------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	.short-width-slider .slider {
+		height: 100%;
+		left: 90%;
+	}
+	.short-width-slider-2 .slider .item {
+		/*margin-left: -48px;
+		margin-right: -48px;*/
+		margin-top: 15px;
+		width: 230px;
+		height: 100%;
+	}
 }
 
 .short-width-slider-2 .slider .item {
@@ -7089,7 +7100,7 @@ p {
 .short-width-slider-2 .next {
 	position: absolute;
 	top: 79px;
-	right: 10px;
+	right: -15px;
 	width: 40px;
 	height: 40px;
 	background: url(../img/slider-buttons.png) no-repeat -20px 0;
@@ -7099,7 +7110,7 @@ p {
 .short-width-slider-2 .prev {
 	position: absolute;
 	top: 79px;
-	left: 10px;
+	left: -15px;
 	width: 40px;
 	height: 40px;
 	background: url(../img/slider-buttons.png) no-repeat 20px 0;

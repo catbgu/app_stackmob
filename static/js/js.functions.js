@@ -206,10 +206,14 @@ $(document).ready(function(){
 			$(this).addClass('selected');
 			$('.footer-'+divInactive).removeClass('selected');
         }else{
-	        if(position.top == 1200){
+			
+	        if(position.top == 1200){ 
+				$("#footer-container").css('top', $(window).height() + "px");
+				position.top = windowHeight;
+				
 	        	$(this).addClass('selected');
 	        	$(".main-container").css('height',screenHeight);
-	        	$("#footer-container").css('height',screenHeight-88);
+	        	$("#footer-container").css('height',windowHeight + "px");
 				$.ajax({
 					url:"../templates/footer/"+divActive+".html",
 					dataType:'html',
