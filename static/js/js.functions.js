@@ -2,7 +2,6 @@ var screenWidth = $(window).width();
 var screenHeight = $(window).height();
 
 $(document).ready(function(){
-
 	// Check if a new cache is available on page load. Swap it in and reload the page to get the new hotness.
 	window.addEventListener('load', function(e) {
 	  window.applicationCache.addEventListener('updateready', function(e) {

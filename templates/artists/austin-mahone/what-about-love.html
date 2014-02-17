@@ -88,24 +88,24 @@
 				  <div class = 'short-width-slider-2'>
 					<div class = 'slider'> 
 					
-							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
-								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png'/>
+							<div class = 'item' href="javascript:;" onclick="itemFunction('item-1')">
+								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png' class="lightbox_trigger"/>
 							</div> 
 							
-							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
-								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png'/>
+							<div class = 'item' href="javascript:;" onclick="">
+								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png' class="lightbox_trigger"/>
 							</div>    
 										
-							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
-								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png'/>
+							<div class = 'item' href="javascript:;" onclick="">
+								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png' class="lightbox_trigger"/>
 							</div>   
 					
-							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
-								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-4.png'/>
+							<div class = 'item' href="javascript:;" onclick="">
+								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-4.png' class="lightbox_trigger" />
 							</div>    
 						
-							<div class = 'item' href="javascript:;" onclick="location.reload();location.href='what-about-love/item-1.html'">
-								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-5.png'/>
+							<div class = 'item' href="javascript:;" onclick="">
+								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-5.png' class="lightbox_trigger"/>
 							</div>   
 						
 					</div>	
@@ -295,7 +295,8 @@
   <script>
     //document.write('<script src='+('__proto__'in{}?'../../../static/js/vendor/zepto':'../../../static/js/vendor/jquery')+'.js><\/script>')
   </script>
-  <!--script src="../../../static/js/foundation/foundation.js"></script>-->
+  <script src="../../../static/js/foundation/foundation.js"></script>
+  <script src="../../../static/js/foundation/foundation.clearing.js"></script>
   <script src="../../../static/js/js.functions.js"></script>
   <script src="../../../static/js/fastclick.js"></script>
   
@@ -313,6 +314,33 @@
 				-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+			}
+			
+			#lightbox {
+				position:fixed; /* keeps the lightbox window in the current viewport */
+				top:0; 
+				left:0; 
+				width:100%; 
+				height:100%; 
+				background:url(../../../static/img/overlay.png) repeat; 
+				text-align:center;
+				z-index: 1001;
+			}
+			#lightbox p {
+				text-align:right; 
+				color:#fff; 
+				margin-right:20px; 
+				font-size:16px;
+				z-index: 999;	
+			}
+			#lightbox iframe {
+				top: 10px;
+				box-shadow:0 0 25px #111;
+				-webkit-box-shadow:0 0 25px #111;
+				-moz-box-shadow:0 0 25px #111;
+				z-index: 1001;
+				width: 50%;
+				height: 900px;
 			}
 		</style>
 	<script type="text/javascript">
@@ -339,13 +367,58 @@
 				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
 					$('iframe').css('height','200px');
+					$('#lightbox').css('width', '80%');
+					$('#lightbox').css('height', '480px');
 				}
 				
 				$('.item').on('click', function(e){
 					e.stopImmediatePropagation();
 					e.preventDefault();
 				});	
+
+				/* --- Custom Lightbox for Items --- */
+				$('.lightbox_trigger').click(function(e) {
+     
+					e.preventDefault();
+					
+					//var image_href = $(this).attr("src");
+					
+					if ($('#lightbox').length > 0) { // #lightbox exists
+					
+						//insert img tag with clicked link's href as src value
+						//$('#content').html('<iframe src="' + image_href + '" />');
+						 
+						//show lightbox window - you can use a transition here if you want, i.e. .show('fast')
+						$('#lightbox').fadeIn("slow");
+					} else { //#lightbox does not exist 
+		 
+						//create HTML markup for lightbox window
+						var lightbox = 
+						'<div id="lightbox">' +
+							'<p>Click to close</p>' +
+							'<div id="content">' + //insert clicked link's href into img src
+								'<iframe src="what-about-love/item-1.html" />' +
+							'</div>' +    
+						'</div>';
+				
+						//insert lightbox HTML into page
+						$('.looks-container').append(lightbox);
+					}
+				});
+				$('#lightbox').live('click', function() {
+					$('#lightbox').fadeOut();
+				});	
+				
 			});
+			
+			function itemFunction(item) {
+					//e.load('what-about-love/item-1.html');
+					//location.reload();
+					//location.href='../../../../what-about-love/'+item+'.html';
+					
+				//	$('.looks-container').load('what-about-love/'+item+'.html');
+			};
+		
 		</script>
 	
   <script>
