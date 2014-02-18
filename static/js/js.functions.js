@@ -251,8 +251,12 @@ $(document).ready(function(){
 	});
 
     $(".maximize-btn").on(click, function(e){ 
-		e.stopImmediatePropagation();
-    	$(".clearing-featured-img img").click(); 
+		//e.stopImmediatePropagation();
+    	//$(".clearing-featured-img img").click(); 
+		 $(".clearing-featured-img a img").animate({ 
+			width: "120%",
+			height: "120%"
+		}, 3000 );
     }); 
 
 //Retailer Button
@@ -342,5 +346,21 @@ $(document).ready(function(){
 			$(this).find( "img:nth-child(2)" ).css("opacity", "1"); 
 			$(this).find( "h5" ).css("color", "#000");
 		}
+	});
+	
+	$('.clearing-featured-img').click(function(){ 
+		if($(this).width() <= 320){
+			$(this).animate({width: "150%"},"slow"); 
+			$('#product-page .product-image').css('border', 'none'); 
+			$('#desc').css('display', 'none');
+			$('.maximize-btn img').css('display', 'none');
+			$('.minimize-icon').css('display', 'block');
+		} else {
+			$(this).animate({width: "100%"},"slow"); 
+			$('#product-page .product-image').css('border', '1px solid #c0c0c0');
+			$('#desc').css('display', 'block');
+			$('.maximize-btn img').css('display', 'block');
+			$('.minimize-icon').css('display', 'none');
+		} 
 	});
 });

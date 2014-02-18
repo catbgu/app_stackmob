@@ -88,23 +88,23 @@
 				  <div class = 'short-width-slider-2'>
 					<div class = 'slider'> 
 					
-							<div class = 'item' href="javascript:;" onclick="itemFunction('item-1')">
+							<div class = 'item' id="item-1" onclick="">
 								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png' class="lightbox_trigger"/>
 							</div> 
 							
-							<div class = 'item' href="javascript:;" onclick="">
+							<div class = 'item' id="item-2" onclick="">
 								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png' class="lightbox_trigger"/>
 							</div>    
 										
-							<div class = 'item' href="javascript:;" onclick="">
+							<div class = 'item' id="item-3" onclick="">
 								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png' class="lightbox_trigger"/>
 							</div>   
 					
-							<div class = 'item' href="javascript:;" onclick="">
+							<div class = 'item' id="item-4" onclick="">
 								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-4.png' class="lightbox_trigger" />
 							</div>    
 						
-							<div class = 'item' href="javascript:;" onclick="">
+							<div class = 'item' id="item-5" onclick="">
 								<img src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-5.png' class="lightbox_trigger"/>
 							</div>   
 						
@@ -334,13 +334,50 @@
 				z-index: 999;	
 			}
 			#lightbox iframe {
-				top: 10px;
+				display: inline-block;
+				float: left;
+				margin-top: 10px;
 				box-shadow:0 0 25px #111;
 				-webkit-box-shadow:0 0 25px #111;
 				-moz-box-shadow:0 0 25px #111;
 				z-index: 1001;
-				width: 50%;
-				height: 900px;
+				width: 62.5%;
+				height: 855px;
+			}
+			#content {
+				margin-left: 27%;
+			}
+			.thumbs {
+				margin-top: 10px;
+				margin-right: 20%;
+				float: right;
+				display: inline-block;
+				width: 135px;
+				
+			}
+			
+			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+				#lightbox iframe {
+					margin-top: 10px;
+					box-shadow:0 0 25px #111;
+					-webkit-box-shadow:0 0 25px #111;
+					-moz-box-shadow:0 0 25px #111;
+					z-index: 1001;
+					width: 100%;
+					height: 480px;
+					padding-bottom: 30px;
+					overflow: auto;
+				}
+				#content {
+					margin-left: 0px;
+				}
+				.thumbs {
+					display: none;
+				}
+				#lightbox p {
+					margin-top: 10px;
+					margin-right: 10px;
+				}
 			}
 		</style>
 	<script type="text/javascript">
@@ -367,8 +404,6 @@
 				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
 					$('iframe').css('height','200px');
-					$('#lightbox').css('width', '80%');
-					$('#lightbox').css('height', '480px');
 				}
 				
 				$('.item').on('click', function(e){
@@ -382,25 +417,32 @@
 					e.preventDefault();
 					
 					//var image_href = $(this).attr("src");
-					
+					var item = $(this).parent().attr('id');
+					console.log('outside conditions, it is: '+item); 
+					 
 					if ($('#lightbox').length > 0) { // #lightbox exists
-					
-						//insert img tag with clicked link's href as src value
-						//$('#content').html('<iframe src="' + image_href + '" />');
-						 
+						var item = $(this).parent().attr('id');
+						$('#lightbox iframe').attr('src', 'what-about-love/'+item+'.html');
+
+						
 						//show lightbox window - you can use a transition here if you want, i.e. .show('fast')
 						$('#lightbox').fadeIn("slow");
+						
+						console.log('inside the if, it is: '+item); 
 					} else { //#lightbox does not exist 
-		 
+						console.log('inside the else, it is: '+item);	
 						//create HTML markup for lightbox window
 						var lightbox = 
 						'<div id="lightbox">' +
 							'<p>Click to close</p>' +
-							'<div id="content">' + //insert clicked link's href into img src
-								'<iframe src="what-about-love/item-1.html" />' +
-							'</div>' +    
+							'<div id="content">' + 
+								'<iframe src="what-about-love/'+ item +'.html"/>' +
+							'</div>' + 
+							'<div class="thumbs">' +
+								'<img src = "../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png" />'
+							'</div>' +		
 						'</div>';
-				
+						console.log('Lightbox: '+lightbox);	
 						//insert lightbox HTML into page
 						$('.looks-container').append(lightbox);
 					}
@@ -408,17 +450,7 @@
 				$('#lightbox').live('click', function() {
 					$('#lightbox').fadeOut();
 				});	
-				
 			});
-			
-			function itemFunction(item) {
-					//e.load('what-about-love/item-1.html');
-					//location.reload();
-					//location.href='../../../../what-about-love/'+item+'.html';
-					
-				//	$('.looks-container').load('what-about-love/'+item+'.html');
-			};
-		
 		</script>
 	
   <script>
