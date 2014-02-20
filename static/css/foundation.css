@@ -3096,6 +3096,15 @@ form.custom {
 		border: none;
 	}
   }
+  #lightbox ul {
+	margin-right: 355px;
+	height: auto;
+  }
+  #lightbox ul  li{
+	margin-top: 12px;
+	width: 100px;
+  }
+  
   #product-page{
     padding-top: 54px;
     margin-bottom: 10px;
@@ -3105,6 +3114,7 @@ form.custom {
     display: block;
     display: table-cell; 
     vertical-align: middle;
+	width: 100%;
   }
   .product-image img{
     width: 100%;
@@ -3877,7 +3887,7 @@ form.custom {
   list-style: none; }
   [data-clearing]:before, [data-clearing]:after {
     content: " ";
-    display: table; }
+    display: block; }
   [data-clearing]:after {
     clear: both; }
   [data-clearing] li {

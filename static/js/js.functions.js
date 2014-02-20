@@ -348,7 +348,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('.clearing-featured-img').click(function(){ 
+	$('.clearing-featured-img').on(click,function(){ 
 		if($(this).width() <= 320){
 			$(this).animate({width: "150%"},"slow"); 
 			$('#product-page .product-image').css('border', 'none'); 
