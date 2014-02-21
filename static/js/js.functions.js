@@ -348,15 +348,14 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('.clearing-featured-img').on(click,function(){ 
-		if($(this).width() <= 320){
-			$(this).animate({width: "150%"},"slow"); 
+	$('.max-button-link').on(click,function(){ 
+		$('.clearing-featured-img').toggleClass('expand-image');
+		if($('.clearing-featured-img').width() <= 320){
 			$('#product-page .product-image').css('border', 'none'); 
 			$('#desc').css('display', 'none');
 			$('.maximize-btn img').css('display', 'none');
 			$('.minimize-icon').css('display', 'block');
 		} else {
-			$(this).animate({width: "100%"},"slow"); 
 			$('#product-page .product-image').css('border', '1px solid #c0c0c0');
 			$('#desc').css('display', 'block');
 			$('.maximize-btn img').css('display', 'block');

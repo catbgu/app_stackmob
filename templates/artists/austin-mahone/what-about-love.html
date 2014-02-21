@@ -310,7 +310,7 @@
 				float: center;
 				max-width: 50%;
 				margin: 10px;
-				margin-left: 20%;
+				margin-left: 5%;
 				-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
 				box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
@@ -330,16 +330,17 @@
 				height:100%; 
 				background:url(../../../static/img/overlay.png) repeat; 
 				text-align:center;
-				z-index: 1001;
+				z-index: 1;
 			}
-			#lightbox a p{
+			.lightbox-exit p{
+				position: absolute;
+				top: 5%;
+				right: 22.5%;
 				text-align:right; 
-				color:#fff; 
-				margin-right:30px; 
-				margin-top: 0px;
-				height: 4%;
+				color:#58ACFA; 
+				height: 27px;
 				font-size:32px;
-				z-index: 999;	
+				z-index: 2000;	
 			}
 			#lightbox iframe {
 				display: inline-block;
@@ -350,31 +351,33 @@
 				-moz-box-shadow:0 0 25px #111;
 				z-index: 1001;
 				width: 62.5%;
-				height: 805px;
+				height: 847px;
 			}
-			#content ul li img:hover{
+			#lightbox ul li img:hover{
 				-webkit-filter: brightness(0.25);
 				-moz-filter: brightness(0.25);
 				filter: brightness(0.25);
 				opacity: 0.8;
 			}
 			.active {
-				-webkit-filter: brightness(0.25);
-				-moz-filter: brightness(0.25);
-				filter: brightness(0.25);
+				-webkit-filter: brightness(0.45);
+				-moz-filter: brightness(0.45);
+				filter: brightness(0.45);
 				opacity: 0.8;
 			}
 			#content {
 				margin-left: 27%;
-				z-index: 1001;
+				margin-top: 2%;
+				z-index: 10;
 			}
-			.thumbs {
-				margin-top: 10px;
-				margin-right: 20%;
-				float: right;
+			.clearing-thumbs {
+				margin-top: 3%;
+				margin-left: 24%;
+				float: left;
 				display: inline-block;
-				width: 135px;
-				
+				width: 100px;
+				z-index: 100;
+				overflow: auto;	
 			}
 			
 			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -392,12 +395,17 @@
 				#content {
 					margin-left: 0px;
 				}
-				.thumbs {
+				.clearing-thumbs {
 					display: none;
 				}
-				#lightbox a p{
-					margin-top: 10px;
-					margin-right: 10px;
+				.lightbox-exit{
+					text-align:right; 
+					color:#fff; 
+					padding: 2% 2% 0 95%;
+					margin-bottom: -20px;
+					height: 27px;
+					font-size:32px;
+					z-index: 2000;	
 				}
 			}
 		</style>
@@ -435,45 +443,43 @@
 				/* --- Custom Lightbox for Items --- */
 				$('.lightbox_trigger').on('click', function(e) {
 
+					//Because Lightbox gets completely removed on exit: no need for if/else statements. 	
 					e.preventDefault();
 					
-					//var image_href = $(this).attr("src");
 					var item = $(this).attr('id');
 					
-					if ($('#lightbox').length > 0) { // #lightbox exists
-						var item = $(this).attr('id');
-						$('#lightbox iframe').attr('src', 'what-about-love/'+item+'.html');
+					console.log("Look Click: "+item);
+					//create HTML markup for lightbox window
+					var lightbox = 
+					'<div id="lightbox">' +
+						'<a class="lightbox-exit" ><p>X</p></a>' +
+						'<div id="content">' + 
+							'<iframe src="what-about-love/'+ item +'.html"/>' +
+						'</div>' + 	
+					'</div>';
 
-						
-						//show lightbox window - you can use a transition here if you want, i.e. .show('fast')
-						$('#lightbox').fadeIn("slow");
-						
-					} else { //#lightbox does not exist 
+					//insert lightbox HTML into page
+					$('.looks-container').append(lightbox);
 					
-						//create HTML markup for lightbox window
-						var lightbox = 
-						'<div id="lightbox">' +
-							'<a><p>X</p></a>' +
-							'<div id="content">' + 
-								'<iframe src="what-about-love/'+ item +'.html"/>' +
-							'</div>' + 	
-						'</div>';
-
-						//insert lightbox HTML into page
-						$('.looks-container').append(lightbox);
+					//Inserting the side thumbnails into lightbox code
+					var itemList = $(this).parent().parent().html();
+					
+					$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
+					$('#lightbox ul').html(itemList);
+					
+					$('#lightbox ul div img').unwrap();
+					$('#lightbox ul img').wrap('<li><a></a></li>');
+			
+					//Making the clicked item from the video page; active.
+					$('#lightbox ul li img[id="'+item+'"]').addClass('active');		
+					
+					//On clicking the side thumbnails...
+					$('#lightbox ul li img').on('click', function(e) {
 						
-						var itemList = $(this).parent().parent().html();
+						var item = $(this).attr('id');
+						console.log("Thumb Click: "+item);
 						
-						$('#content').append('<ul class="clearing-thumbs" data-clearing></ul>');
-						$('#content ul').html(itemList);
-						
-						$('#content ul div img').unwrap();
-						$('#content ul img').wrap('<li><a></a></li>');
-						
-					}
-					$('#content ul li img').on('click', function(e) {
-						
-						$(this).removeClass('active');
+						$('#lightbox ul li img').removeClass('active');
 						$(this).addClass('active');
 						
 						var itemID = $(this).attr('id');	
@@ -482,8 +488,10 @@
 					});
 						
 				});
-				$('#lightbox a p').live('click', function() {
-					$('#lightbox').fadeOut();	
+				//Removing each exited lightbox to not clutter memory. 
+				$('.lightbox-exit').live('click', function() {
+					$('#lightbox').fadeOut(300, function() { $(this).remove(); });	
+					$('#lightbox ul li img').removeClass('active');
 				});	
 			
 			
