@@ -380,7 +380,6 @@
 				z-index: 100;
 				overflow: scroll;	
 			}
-			
 			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 				#lightbox iframe {
 					margin-top: 10px;
@@ -389,7 +388,7 @@
 					-moz-box-shadow:0 0 25px #111;
 					z-index: 1001;
 					width: 100%;
-					height: 460px;
+					height: 435px;
 					padding-bottom: 40px;
 					overflow: auto;
 				}
@@ -424,8 +423,43 @@
 					right: 21.5%;
 				}
 			}
+			
+			/* -- For mobile lightbox sliding --- */
+			.iosSlider2 {
+				left: 0;
+			    overflow: hidden;
+			    position: relative;
+			    top: 0;
+			    width: 100%;
+				height: 435px;
+			}
+			
+			.iosSlider .slider2 {
+				width: 20%;
+				height: 100%;
+			}
+			.slider2 {
+				height: 100%;
+			}
+			
+			
+			.iosSlider2 .slider2 .item {
+				float: left;
+			    width: 100%;
+			    height: 100%;
+			    padding: 0;
+			    background: #000;
+			}
+			.iosSlider .slider .item1 {
+			}
+			
+			.iosSlider .slider .item2 {
+				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png) no-repeat 0 0;
+			}
+			
 		</style>
 	<script type="text/javascript">
+			
 			function lightboxExit() {
 				$('#lightbox').fadeOut(300, function() { $(this).remove(); });	
 				$('#lightbox ul li img').removeClass('active');
@@ -433,6 +467,11 @@
 			
 			$(document).ready(function() {
 				$("#footer-container").css('top', $(document).height() + "px");
+				
+				$('.iosSlider2').iosSlider({
+					desktopClickDrag: true,
+					snapToChildren: true
+				});
 				
 				
 				$('.short-width-slider-2').each(function() {
@@ -456,7 +495,7 @@
 				if(mobile){
 					$('iframe').css('height','200px');
 					$('clearing-thumbs').css('display', 'none');
-				}
+				} 
 				
 				$('.item').on('click', function(e){
 					e.stopImmediatePropagation();
@@ -479,6 +518,14 @@
 							'<iframe src="what-about-love/'+ item +'.html"/>' +
 						'</div>' + 	
 					'</div>';
+					
+					var lightbox2 = 
+					'<div id="lightbox">' +
+						'<a class="lightbox-exit" onclick="lightboxExit()"><p>X</p></a>' +
+						'<div id="content">' + 
+							'<iframe src="what-about-love/item-2.html"/>' +
+						'</div>' + 	
+					'</div>';
 
 					//insert lightbox HTML into page
 					$('.looks-container').append(lightbox);
@@ -486,28 +533,41 @@
 					//Inserting the side thumbnails into lightbox code
 					var itemList = $(this).parent().parent().html();
 					
-					$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
-					$('#lightbox ul').html(itemList);
-					
-					$('#lightbox ul div img').unwrap();
-					$('#lightbox ul img').wrap('<li><a></a></li>');
-			
-					//Making the clicked item from the video page; active.
-					$('#lightbox ul li img[id="'+item+'"]').addClass('active');		
-					
-					//On clicking the side thumbnails...
-					$('#lightbox ul li img').on('click', function(e) {
+					/* --- For mobile ---*/
+					var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
+					if(mobile){
+						//Doesn't work...
+						$('#content').wrap('<div class = "iosSlider2"></div>');
+						$('.iosSlider2').wrapInner('<div class = "slider2"></div>');
+						$('#content').wrap('<div class = "item item1"></div>');
+						$('.slider2').append('<div class ="item item2"><iframe src="what-about-love/item-2.html"/></div>');
 						
-						var item = $(this).attr('id');
+						alert($('#lightbox').html());
 						
-						$('#lightbox ul li img').removeClass('active');
-						$(this).addClass('active');
+					} else {
+						$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
+						$('#lightbox ul').html(itemList);
 						
-						var itemID = $(this).attr('id');	
-						$('#lightbox iframe').attr('src', 'what-about-love/'+itemID+'.html');
+						$('#lightbox ul div img').unwrap();
+						$('#lightbox ul img').wrap('<li><a></a></li>');
 				
-					});
+						//Making the clicked item from the video page; active.
+						$('#lightbox ul li img[id="'+item+'"]').addClass('active');		
 						
+						//On clicking the side thumbnails...
+						$('#lightbox ul li img').on('click', function(e) {
+							
+							var item = $(this).attr('id');
+							
+							$('#lightbox ul li img').removeClass('active');
+							$(this).addClass('active');
+							
+							var itemID = $(this).attr('id');	
+							$('#lightbox iframe').attr('src', 'what-about-love/'+itemID+'.html');
+					
+						});
+					}
+					
 				});			
 			});
 		</script>
