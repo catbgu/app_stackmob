@@ -290,8 +290,8 @@
 
 <!--SCRIPTS-->
   <!-- jQuery library -->
-  <!--<script type="text/javascript" src = "../../../static/js/_lib/jquery-1.8.2.min.js"></script>-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+   <!--<script type="text/javascript" src = "../../../static/js/_lib/jquery-1.8.2.min.js"></script>--> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
   <script src="../../../static/js/vendor/custom.modernizr.js"></script>
   <script>
     /*document.write('<script src='+('__proto__'in{}?'../../../static/js/vendor/zepto':'../../../static/js/vendor/jquery')+'.js><\/script>')*/
@@ -305,7 +305,7 @@
 	
 	<!-- iosSlider plugin -->
 	<script src = "../../../static/js/jquery.iosslider.js"></script>
-			<style type="text/css">
+		<style type="text/css">
 			.slider .item img {
 				float: center;
 				max-width: 50%;
@@ -425,36 +425,39 @@
 			}
 			
 			/* -- For mobile lightbox sliding --- */
-			.iosSlider2 {
+			.iosSlider {
 				left: 0;
 			    overflow: hidden;
 			    position: relative;
 			    top: 0;
-			    width: 100%;
-				height: 435px;
+			    width: 1024px;
+			    height: 700px;
 			}
 			
-			.iosSlider .slider2 {
-				width: 20%;
+			.iosSlider .slider {
+				width: 100%;
 				height: 100%;
 			}
-			.slider2 {
+			.slider {
 				height: 100%;
 			}
-			
-			
-			.iosSlider2 .slider2 .item {
+			.iosSlider .slider .item {
 				float: left;
-			    width: 100%;
-			    height: 100%;
+			    width: 50%;
+			    height: 50%;
 			    padding: 0;
 			    background: #000;
 			}
 			.iosSlider .slider .item1 {
+				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png) no-repeat 0 0;
 			}
 			
 			.iosSlider .slider .item2 {
 				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png) no-repeat 0 0;
+			}
+			
+			.iosSlider .slider .item3 {
+				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png) no-repeat 0 0;
 			}
 			
 		</style>
@@ -468,7 +471,7 @@
 			$(document).ready(function() {
 				$("#footer-container").css('top', $(document).height() + "px");
 				
-				$('.iosSlider2').iosSlider({
+				$('.iosSlider').iosSlider({
 					desktopClickDrag: true,
 					snapToChildren: true
 				});
@@ -518,14 +521,6 @@
 							'<iframe src="what-about-love/'+ item +'.html"/>' +
 						'</div>' + 	
 					'</div>';
-					
-					var lightbox2 = 
-					'<div id="lightbox">' +
-						'<a class="lightbox-exit" onclick="lightboxExit()"><p>X</p></a>' +
-						'<div id="content">' + 
-							'<iframe src="what-about-love/item-2.html"/>' +
-						'</div>' + 	
-					'</div>';
 
 					//insert lightbox HTML into page
 					$('.looks-container').append(lightbox);
@@ -536,14 +531,12 @@
 					/* --- For mobile ---*/
 					var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
 					if(mobile){
-						//Doesn't work...
-						$('#content').wrap('<div class = "iosSlider2"></div>');
-						$('.iosSlider2').wrapInner('<div class = "slider2"></div>');
+						/*
+						$('#content').wrap('<div class = "iosSlider"></div>');
+						$('.iosSlider').wrapInner('<div class = "slider"></div>');
 						$('#content').wrap('<div class = "item item1"></div>');
-						$('.slider2').append('<div class ="item item2"><iframe src="what-about-love/item-2.html"/></div>');
-						
-						alert($('#lightbox').html());
-						
+						$('.slider').html('<div class ="item item2"></div>');
+						$('.slider').append('<div class ="item item3"></div>');*/						
 					} else {
 						$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
 						$('#lightbox ul').html(itemList);

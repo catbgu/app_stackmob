@@ -135,7 +135,8 @@
   <script>
     /*document.write('<script src='+('__proto__'in{}?'../../../../static/js/vendor/zepto':'../../../../static/js/vendor/jquery')+'.js><\/script>')*/
   </script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+  <!--<script type="text/javascript" src = "../../../../static/js/_lib/jquery-1.8.2.min.js"></script>-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="../../../../static/js/vendor/custom.modernizr.js"></script>
   <script src="../../../../static/js/foundation/foundation.js"></script>
   <script src="../../../../static/js/foundation/foundation.reveal.js"></script>
@@ -148,6 +149,68 @@
           FastClick.attach(document.body);
       }, false);    
   </script> 
+  <!-- iosSlider plugin -->
+	<script src = "../../../../static/js/jquery.iosslider.js"></script>
+		<style type="text/css">
+			/* -- For mobile lightbox sliding --- */
+			.iosSlider {
+				left: 0;
+			    overflow: hidden;
+			    position: relative;
+			    top: 0;
+			    width: 1024px;
+			    height: 700px;
+			}
+			
+			.iosSlider .slider {
+				width: 100%;
+				height: 100%;
+			}
+			.slider {
+				height: 100%;
+			}
+			.iosSlider .slider .item {
+				float: left;
+			    width: 100%;
+			    height: 100%;
+			    padding: 0;
+			    background: #000;
+			}
+			.iosSlider .slider .item1 {
+				background: url(../../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png) no-repeat 0 0;
+			}
+			
+			.iosSlider .slider .item2 {
+				background: url(../../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png) no-repeat 0 0;
+			}
+			
+			.iosSlider .slider .item3 {
+				background: url(../../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png) no-repeat 0 0;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				
+				$('.iosSlider').iosSlider({
+					desktopClickDrag: true,
+					snapToChildren: true
+				});
+			
+				/* --- For mobile ---*/
+				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
+				if(mobile){
+					$('body').wrap('<div class = "iosSlider"></div>');
+					$('.iosSlider').wrapInner('<div class = "slider"></div>');
+					$('body').wrap('<div class = "item item1"></div>');
+					$('.slider').append('<div class ="item item2"></div>');
+					$('.slider').append('<div class ="item item3"></div>');
+				} 
+			});			
+		</script>
+  
+  
+  
   <script>
     /*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-42670109-1', 'invid.io');ga('send', 'pageview'); */
   </script>    
