@@ -291,7 +291,7 @@
 <!--SCRIPTS-->
   <!-- jQuery library -->
    <!--<script type="text/javascript" src = "../../../static/js/_lib/jquery-1.8.2.min.js"></script>--> 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="../../../static/js/vendor/custom.modernizr.js"></script>
   <script>
     /*document.write('<script src='+('__proto__'in{}?'../../../static/js/vendor/zepto':'../../../static/js/vendor/jquery')+'.js><\/script>')*/
@@ -380,7 +380,20 @@
 				z-index: 100;
 				overflow: scroll;	
 			}
-			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+			
+			.iPhoneClass{
+				margin-top: 10px;
+				box-shadow:0 0 25px #111;
+				-webkit-box-shadow:0 0 25px #111;
+				-moz-box-shadow:0 0 25px #111;
+				z-index: 1001;
+				width: 100%;
+				height: 430px;
+				padding-bottom: 150px;
+				overflow: scroll;
+			}
+
+			@media only screen and (-webkit-min-device-pixel-ratio: 2) {
 				#lightbox iframe {
 					margin-top: 10px;
 					box-shadow:0 0 25px #111;
@@ -388,9 +401,23 @@
 					-moz-box-shadow:0 0 25px #111;
 					z-index: 1001;
 					width: 100%;
-					height: 435px;
-					padding-bottom: 40px;
-					overflow: auto;
+					height: 430px;
+					padding-bottom: 150px;
+					overflow: scroll;
+				}
+			}
+			/* -- Mobile -- */
+			@media only screen and (min-device-width : 320px) {
+				#lightbox iframe {
+					margin-top: 10px;
+					box-shadow:0 0 25px #111;
+					-webkit-box-shadow:0 0 25px #111;
+					-moz-box-shadow:0 0 25px #111;
+					z-index: 1001;
+					width: 100%;
+					height: 420px;
+					margin-bottom: 45px;
+					overflow: scroll;
 				}
 				#content {
 					margin-left: 0px;
@@ -413,6 +440,8 @@
 					font-size:48px;
 				}
 			}
+			
+			/* -- Firefox -- */
 			@-moz-document url-prefix() {
 				#lightbox iframe {
 					margin-top: 15px;
@@ -467,8 +496,9 @@
 				$('#lightbox').fadeOut(300, function() { $(this).remove(); });	
 				$('#lightbox ul li img').removeClass('active');
 			}
-			
+
 			$(document).ready(function() {
+				
 				$("#footer-container").css('top', $(document).height() + "px");
 				
 				$('.iosSlider').iosSlider({
@@ -561,7 +591,8 @@
 						});
 					}
 					
-				});			
+				});		
+				
 			});
 		</script>
 	
