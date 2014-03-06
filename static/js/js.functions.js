@@ -29,7 +29,8 @@ $(document).ready(function(){
 		
 		$(".four.columns.artist-video-btn").removeClass("four columns artist-video-btn").addClass("centred").wrap("<li class='element'></li>").prepend("<img class='shop-icon' src='../../../static/img/icons/shop-icon-small.png' style='width: 55px; height: 55px;' />");
 		
-		$(".video-title").wrapInner("<h5></h5>");
+		$(".video-title").removeClass("video-title").addClass("artist-name");
+		//$(".video-title").wrapInner("<h5></h5>");
 	}
 
 	$(document).foundation(); 

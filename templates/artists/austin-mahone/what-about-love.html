@@ -380,34 +380,13 @@
 				z-index: 100;
 				overflow: scroll;	
 			}
-			
-			.iPhoneClass{
-				margin-top: 10px;
-				box-shadow:0 0 25px #111;
-				-webkit-box-shadow:0 0 25px #111;
-				-moz-box-shadow:0 0 25px #111;
-				z-index: 1001;
-				width: 100%;
-				height: 430px;
-				padding-bottom: 150px;
-				overflow: scroll;
-			}
 
-			@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-				#lightbox iframe {
-					margin-top: 10px;
-					box-shadow:0 0 25px #111;
-					-webkit-box-shadow:0 0 25px #111;
-					-moz-box-shadow:0 0 25px #111;
-					z-index: 1001;
-					width: 100%;
-					height: 430px;
-					padding-bottom: 150px;
-					overflow: scroll;
-				}
-			}
 			/* -- Mobile -- */
-			@media only screen and (min-device-width : 320px) {
+			@media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
+				#lightbox {
+					height:480px; 
+				}
+			
 				#lightbox iframe {
 					margin-top: 10px;
 					box-shadow:0 0 25px #111;
@@ -415,12 +394,16 @@
 					-moz-box-shadow:0 0 25px #111;
 					z-index: 1001;
 					width: 100%;
-					height: 420px;
-					margin-bottom: 45px;
-					overflow: scroll;
+					height: 100%;
+					margin-bottom: 10px;
+					overflow-y: scroll;
+					overflow-x: hidden;
+					-webkit-overflow-scrolling: touch;
 				}
 				#content {
 					margin-left: 0px;
+					height: 380px;
+					width: 100%;
 				}
 				.clearing-thumbs {
 					display: none;
@@ -440,6 +423,35 @@
 					font-size:48px;
 				}
 			}
+			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation: landscape) { 
+				#lightbox {
+					height: 100%;
+					width: 100%;	
+				}
+				#lightbox iframe {
+					margin-top: 10px;
+					box-shadow:0 0 25px #111;
+					-webkit-box-shadow:0 0 25px #111;
+					-moz-box-shadow:0 0 25px #111;
+					z-index: 1001;
+					width: 100%;
+					height: 100%;
+					margin-bottom: 10px;
+					overflow-y: scroll;
+					overflow-x: hidden;
+					-webkit-overflow-scrolling: touch;
+				}
+				#content {
+					margin-left: 0px;
+					width: 100%;
+					height: 215px;
+				}
+				.lightbox-exit p{
+					top: 15%;
+					left: 85%;
+					font-size:48px;
+				}
+			}
 			
 			/* -- Firefox -- */
 			@-moz-document url-prefix() {
@@ -453,40 +465,51 @@
 				}
 			}
 			
+			
 			/* -- For mobile lightbox sliding --- */
 			.iosSlider {
-				left: 0;
+				position:fixed; /* keeps the lightbox window in the current viewport */
+				top:0; 
+				left:0; 
+				width:100%; 
+				height:100%;
+				margin-left: 27%;
+				margin-top: 2%;
+				z-index: 10;
+				text-align: center;
 			    overflow: hidden;
-			    position: relative;
 			    top: 0;
 			    width: 1024px;
-			    height: 700px;
+			    height: 400px;
 			}
 			
 			.iosSlider .slider {
-				width: 100%;
-				height: 100%;
-			}
-			.slider {
-				height: 100%;
+				width: 50%;
+				height: 50%;
+				z-index: 100;
 			}
 			.iosSlider .slider .item {
 				float: left;
-			    width: 50%;
-			    height: 50%;
+			    width: 100%;
+			    height: 100%;
 			    padding: 0;
-			    background: #000;
+				background: #000;
+				z-index: 100;
 			}
-			.iosSlider .slider .item1 {
+			
+			.iosSlider .slider .item2 {
 				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png) no-repeat 0 0;
+				z-index: 100;
 			}
 			
 			.iosSlider .slider .item2 {
 				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png) no-repeat 0 0;
+				z-index: 100;
 			}
 			
 			.iosSlider .slider .item3 {
 				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png) no-repeat 0 0;
+				z-index: 100;
 			}
 			
 		</style>
@@ -535,9 +558,14 @@
 					e.preventDefault();
 				});	
 
+				$('.iosSlider').iosSlider({
+					desktopClickDrag: true,
+					snapToChildren: true
+				});
+				
 				/* --- Custom Lightbox for Items --- */
 				$('.lightbox_trigger').on('click', function(e) {
-
+					
 					//Because Lightbox gets completely removed on exit: no need for if/else statements. 	
 					e.preventDefault();
 					
@@ -548,48 +576,47 @@
 					'<div id="lightbox">' +
 						'<a class="lightbox-exit" onclick="lightboxExit()"><p>X</p></a>' +
 						'<div id="content">' + 
-							'<iframe src="what-about-love/'+ item +'.html"/>' +
-						'</div>' + 	
+							'<iframe src="what-about-love/'+ item +'.html" frameBorder="0"/>' +
+						'</div>'; 	
 					'</div>';
-
+					
+					var sliderbox = 
+						'<div class="iosSlider">' +
+							'<div class="slider">' +
+								'<div class = "item item1"></div>' +
+								'<div class = "item item1"></div>' +
+								'<div class = "item item1"></div>' +
+							'</div>' +
+					'</div>';			
+							
 					//insert lightbox HTML into page
 					$('.looks-container').append(lightbox);
+					//$('.looks-container').append(sliderbox);					
 					
 					//Inserting the side thumbnails into lightbox code
 					var itemList = $(this).parent().parent().html();
 					
-					/* --- For mobile ---*/
-					var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
-					if(mobile){
-						/*
-						$('#content').wrap('<div class = "iosSlider"></div>');
-						$('.iosSlider').wrapInner('<div class = "slider"></div>');
-						$('#content').wrap('<div class = "item item1"></div>');
-						$('.slider').html('<div class ="item item2"></div>');
-						$('.slider').append('<div class ="item item3"></div>');*/						
-					} else {
-						$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
-						$('#lightbox ul').html(itemList);
-						
-						$('#lightbox ul div img').unwrap();
-						$('#lightbox ul img').wrap('<li><a></a></li>');
-				
-						//Making the clicked item from the video page; active.
-						$('#lightbox ul li img[id="'+item+'"]').addClass('active');		
-						
-						//On clicking the side thumbnails...
-						$('#lightbox ul li img').on('click', function(e) {
-							
-							var item = $(this).attr('id');
-							
-							$('#lightbox ul li img').removeClass('active');
-							$(this).addClass('active');
-							
-							var itemID = $(this).attr('id');	
-							$('#lightbox iframe').attr('src', 'what-about-love/'+itemID+'.html');
+					$('#lightbox').prepend('<ul class="clearing-thumbs" data-clearing></ul>');
+					$('#lightbox ul').html(itemList);
 					
-						});
-					}
+					$('#lightbox ul div img').unwrap();
+					$('#lightbox ul img').wrap('<li><a></a></li>');
+			
+					//Making the clicked item from the video page; active.
+					$('#lightbox ul li img[id="'+item+'"]').addClass('active');		
+					
+					//On clicking the side thumbnails...
+					$('#lightbox ul li img').on('click', function(e) {
+						
+						var item = $(this).attr('id');
+						
+						$('#lightbox ul li img').removeClass('active');
+						$(this).addClass('active');
+						
+						var itemID = $(this).attr('id');	
+						$('#lightbox iframe').attr('src', 'what-about-love/'+itemID+'.html');
+				
+					});
 					
 				});		
 				

@@ -154,8 +154,8 @@
 			    overflow: hidden;
 			    position: relative;
 			    top: 0;
-			    width: 1024px;
-			    height: 700px;
+			    width: 320px;
+			    height: 480px;
 			}
 			
 			.iosSlider .slider {
@@ -195,13 +195,13 @@
 			
 				/* --- For mobile ---*/
 				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
-				if(!mobile){
-					$('body').wrap('<div class = "iosSlider"></div>');
+				/*if(!mobile){
+					$('html').wrapInner('<div class = "iosSlider"></div>');
 					$('.iosSlider').wrapInner('<div class = "slider"></div>');
-					$('body').wrap('<div class = "item item1"></div>');
+					$('.slider').wrapInner('<div class = "item item1"></div>');
 					$('.slider').append('<div class ="item item2"></div>');
 					$('.slider').append('<div class ="item item3"></div>');
-				} 
+				} */
 			});			
 		</script>
   
