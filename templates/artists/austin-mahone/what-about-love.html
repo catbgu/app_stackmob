@@ -60,7 +60,7 @@
           <a class="name" href="javascript:;" onclick="location.reload();location.href='../../music.html'">Inspired</a>          
       </nav>
 
-      <!--<div class="spinner-wrap"><div id="spinner"><img src="../../../static/img/spinner.gif"></div></div>-->
+      <div class="spinner-wrap"><div id="spinner"><img src="../../../static/img/spinner.gif"></div></div>
       <div class="main-container" style="background: #D4D4D4;">
         <div class="row">
           <div class="twelve columns video-container">
@@ -334,25 +334,24 @@
 			}
 			.lightbox-exit p{
 				position: absolute;
-				top: 5%;
+				top: 3%;
 				right: 22.5%;
 				text-align:right; 
 				color:#58ACFA; 
 				height: 27px;
-				font-size:32px;
+				font-size:48px;
 				z-index: 1000;	
 			}
 			#lightbox iframe {
 				display: inline-block;
 				float: left;
-				margin-top: 10px;
+				margin-top: 12px;
 				box-shadow:0 0 25px #111;
 				-webkit-box-shadow:0 0 25px #111;
 				-moz-box-shadow:0 0 25px #111;
 				z-index: 1001;
 				width: 62.5%;
-				height: 847px;
-				max-height: 847px;
+				height: 89.3%;
 			}
 			#lightbox ul li img:hover{
 				-webkit-filter: brightness(0.25);
@@ -372,8 +371,9 @@
 				z-index: 10;
 			}
 			.clearing-thumbs {
-				margin-top: 3%;
 				margin-left: 24%;
+				margin-top: 1.99%;
+				margin-bottom: 5%;
 				float: left;
 				display: inline-block;
 				width: 100px;
@@ -383,10 +383,6 @@
 
 			/* -- Mobile -- */
 			@media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
-				#lightbox {
-					height:480px; 
-				}
-			
 				#lightbox iframe {
 					margin-top: 10px;
 					box-shadow:0 0 25px #111;
@@ -394,7 +390,7 @@
 					-moz-box-shadow:0 0 25px #111;
 					z-index: 1001;
 					width: 100%;
-					height: 100%;
+					height: 80%;
 					margin-bottom: 10px;
 					overflow-y: scroll;
 					overflow-x: hidden;
@@ -402,7 +398,6 @@
 				}
 				#content {
 					margin-left: 0px;
-					height: 380px;
 					width: 100%;
 				}
 				.clearing-thumbs {
@@ -423,6 +418,7 @@
 					font-size:48px;
 				}
 			}
+			/* -- Mobile: Landscape -- */
 			@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation: landscape) { 
 				#lightbox {
 					height: 100%;
@@ -435,7 +431,7 @@
 					-moz-box-shadow:0 0 25px #111;
 					z-index: 1001;
 					width: 100%;
-					height: 100%;
+					height: 69.5%;
 					margin-bottom: 10px;
 					overflow-y: scroll;
 					overflow-x: hidden;
@@ -444,15 +440,66 @@
 				#content {
 					margin-left: 0px;
 					width: 100%;
-					height: 215px;
 				}
 				.lightbox-exit p{
 					top: 15%;
-					left: 85%;
+					right: 5%;
 					font-size:48px;
 				}
 			}
 			
+			/* -- iPad all Gens -- */
+			@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+				#lightbox iframe {
+					display: inline-block;
+					float: left;
+					margin-top: 12px;
+					box-shadow:0 0 25px #111;
+					-webkit-box-shadow:0 0 25px #111;
+					-moz-box-shadow:0 0 25px #111;
+					z-index: 1001;
+					width: 90%;
+					height: 90.2%;
+				}
+				#content {
+					margin-left: 20%;
+					margin-top: 5%;
+					z-index: 10;
+				}
+				.clearing-thumbs {
+					margin-top: 5%;
+					margin-left: 7%;
+					float: left;
+					display: inline-block;
+					width: 100px;
+					z-index: 100;
+					overflow: scroll;	
+				}
+				.lightbox-exit p{
+					top: 5%;
+					left: 86%;
+					font-size:48px;
+				}
+			}
+			/* -- iPad all Gens : Landscape -- */
+			@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+				#lightbox iframe {
+					height: 86.4%;
+				}
+				#content {
+					margin-top: 4%;
+					margin-left: 7%;
+				}
+				.clearing-thumbs {
+					margin-top: 4%;	
+					margin-left: 3%;
+					overflow: scroll;
+				}
+				.lightbox-exit p{
+					top: 7%;
+					left: 91%;
+				}
+			}
 			/* -- Firefox -- */
 			@-moz-document url-prefix() {
 				#lightbox iframe {
@@ -463,53 +510,9 @@
 				.lightbox-exit p{
 					right: 21.5%;
 				}
-			}
-			
-			
-			/* -- For mobile lightbox sliding --- */
-			.iosSlider {
-				position:fixed; /* keeps the lightbox window in the current viewport */
-				top:0; 
-				left:0; 
-				width:100%; 
-				height:100%;
-				margin-left: 27%;
-				margin-top: 2%;
-				z-index: 10;
-				text-align: center;
-			    overflow: hidden;
-			    top: 0;
-			    width: 1024px;
-			    height: 400px;
-			}
-			
-			.iosSlider .slider {
-				width: 50%;
-				height: 50%;
-				z-index: 100;
-			}
-			.iosSlider .slider .item {
-				float: left;
-			    width: 100%;
-			    height: 100%;
-			    padding: 0;
-				background: #000;
-				z-index: 100;
-			}
-			
-			.iosSlider .slider .item2 {
-				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-1.png) no-repeat 0 0;
-				z-index: 100;
-			}
-			
-			.iosSlider .slider .item2 {
-				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-2.png) no-repeat 0 0;
-				z-index: 100;
-			}
-			
-			.iosSlider .slider .item3 {
-				background: url(../../../static/img/music/artists/austin-mahone/what-about-love/item-3.png) no-repeat 0 0;
-				z-index: 100;
+				.clearing-thumbs {
+					margin-top: 2.2%;
+				}
 			}
 			
 		</style>
@@ -547,7 +550,7 @@
 
 				
 				
-				var mobile = navigator.userAgent.match(/iPhone|iPad|Android|Windows Phone|BlackBerry/i);
+				var mobile = navigator.userAgent.match(/iPhone|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
 					$('iframe').css('height','200px');
 					$('clearing-thumbs').css('display', 'none');
@@ -578,20 +581,10 @@
 						'<div id="content">' + 
 							'<iframe src="what-about-love/'+ item +'.html" frameBorder="0"/>' +
 						'</div>'; 	
-					'</div>';
-					
-					var sliderbox = 
-						'<div class="iosSlider">' +
-							'<div class="slider">' +
-								'<div class = "item item1"></div>' +
-								'<div class = "item item1"></div>' +
-								'<div class = "item item1"></div>' +
-							'</div>' +
-					'</div>';			
+					'</div>';				
 							
 					//insert lightbox HTML into page
-					$('.looks-container').append(lightbox);
-					//$('.looks-container').append(sliderbox);					
+					$('.looks-container').append(lightbox);					
 					
 					//Inserting the side thumbnails into lightbox code
 					var itemList = $(this).parent().parent().html();
@@ -618,9 +611,38 @@
 				
 					});
 					
+					$('div#content').css('height', $(document).height() + 'px');
+					
 				});		
 				
 			});
+			window.onorientationchange = function() { 
+				$('div#content').css('height', $(document).height() + 'px');
+			};
+			
+			/* -- Height changes due to device orientation -- */
+			var mobile = navigator.userAgent.match(/iPhone|iPod|Android|Windows Phone|BlackBerry/i);
+			var iPad = navigator.userAgent.match(/iPad/i);
+			
+			var orientation = Math.abs(window.orientation) == 90 ? 'landscape' : 'portrait';
+			
+			if(iPad){
+			
+				if(orientation == 'portrait'){
+					$('#lightbox iframe').css('height','90.2%'); 
+				} else {
+					$('#lightbox iframe').css('height','86.4%'); 
+				}
+				
+			} else if(mobile) {
+			
+				if(orientation == 'portrait'){
+					$('#lightbox iframe').css('height','80%'); 
+				} else {
+					$('#lightbox iframe').css('height','69.5%'); 
+				}
+				
+			}
 		</script>
 	
   <script>

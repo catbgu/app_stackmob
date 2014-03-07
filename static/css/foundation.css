@@ -2996,6 +2996,16 @@ form.custom {
     font-size: 18px;
     color: #000;
   }
+  @media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
+	  .look-title{
+		z-index: 1000;
+	}
+  }
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+	.look-title{
+		z-index: 1000;
+	}
+  }
   .look-composition{
     position: relative;
     padding-top: 14px;
@@ -3089,7 +3099,7 @@ form.custom {
 	}
   }
   #lightbox ul {
-	height: 88%;
+	height: 91%;
 	overflow-y: auto;
 	overflow-x: hidden;
   }
@@ -3099,7 +3109,7 @@ form.custom {
   }
   @-moz-document url-prefix() {
 	#lightbox ul {
-		height: 85%;
+		height: 90.5%;
 	}
   }
   #product-page{
