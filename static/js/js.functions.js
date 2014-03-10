@@ -1,7 +1,16 @@
 var screenWidth = $(window).width();
 var screenHeight = $(window).height();
 
+//The lightbox for the product page
+function lightboxExit() {
+	$('#lightbox').fadeOut(300, function() { $(this).remove(); });	
+	$('#lightbox ul li img').removeClass('active');
+}
+
+
 $(document).ready(function(){
+	$("#footer-container").css('top', $(document).height() + "px");
+
 	// Check if a new cache is available on page load. Swap it in and reload the page to get the new hotness.
 	window.addEventListener('load', function(e) {
 	  window.applicationCache.addEventListener('updateready', function(e) {
@@ -434,4 +443,96 @@ $(document).ready(function(){
 		$('.row.product-buttons').find('*').removeClass('ie11');
 	}
 	/* -----  END CSS Image Modification for IE browsers ------ */
+
+	// iosSlider and Lightbox functions for video and product pages.
+	/* --- Custom Lightbox for Items --- */
+	$('.lightbox_trigger').on('click', function(e) {
+		
+		//Because Lightbox gets completely removed on exit: no need for if/else statements. 	
+		e.preventDefault();
+		
+		var item = $(this).attr('id');
+		
+		//create HTML markup for lightbox window
+		var lightbox = 
+		'<div id="lightbox">' +
+			'<a class="lightbox-exit" onclick="lightboxExit()"><p>X</p></a>' +
+			'<div id="content">' + 
+				'<iframe src="what-about-love/'+ item +'.html" frameBorder="0"/>' +
+			'</div>'; 	
+		'</div>';				
+		
+		//insert lightbox HTML into page
+		$('.looks-container').append(lightbox);	
+		
+		$('#lightbox iframe').css('opacity', '0');
+		
+		//Loading iframe page first);
+		$('#lightbox iframe').ready(function() {
+			//$('#lightbox iframe').addClass('afterLoad');
+			$('#lightbox iframe').animate({'opacity':'1'}, 1500);
+		});
+
+		
+						
+		
+		//Inserting the side thumbnails into lightbox code
+		var itemList = $(this).parent().parent().html();
+		
+		$('#lightbox').prepend('<ul class="clearing-thumbs-lightbox"></ul>');
+		$('#lightbox ul').html(itemList);
+		
+		$('#lightbox ul div img').unwrap();
+		$('#lightbox ul img').wrap('<li><a></a></li>');
+		
+		$('#lightbox ul li img').addClass('notActive');
+
+		//Making the clicked item from the video page; active.
+		$('#lightbox ul li img[id="'+item+'"]').removeClass('notActive').addClass('active');		
+		
+		//On clicking the side thumbnails...
+		$('#lightbox ul li img').on('click', function(e) {
+			
+			var item = $(this).attr('id');
+			
+			$('#lightbox ul li img').removeClass('active').addClass('notActive');
+			$(this).removeClass('notActive').addClass('active');
+			
+			var itemID = $(this).attr('id');	
+			$('#lightbox iframe').attr('src', 'what-about-love/'+itemID+'.html');
+	
+		});
+		
+		$('div#content').css('height', $(document).height() + 'px');
+		
+	});	
 });
+
+/* -- For the Lightbox to load product page -- */
+window.onorientationchange = function() { 
+	$('div#content').css('height', $(document).height() + 'px');
+};
+
+/* -- Height changes due to device orientation -- */
+var mobile = navigator.userAgent.match(/iPhone|iPod|Android|Windows Phone|BlackBerry/i);
+var iPad = navigator.userAgent.match(/iPad/i);
+
+var orientation = Math.abs(window.orientation) == 90 ? 'landscape' : 'portrait';
+
+if(iPad){
+
+	if(orientation == 'portrait'){
+		$('#lightbox iframe').css('height','90.2%'); 
+	} else {
+		$('#lightbox iframe').css('height','86.4%'); 
+	}
+	
+} else if(mobile) {
+
+	if(orientation == 'portrait'){
+		$('#lightbox iframe').css('height','80%'); 
+	} else {
+		$('#lightbox iframe').css('height','69.5%'); 
+	}
+	
+}

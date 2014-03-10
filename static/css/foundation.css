@@ -2998,12 +2998,12 @@ form.custom {
   }
   @media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
 	  .look-title{
-		z-index: 1000;
+		z-index: 5;
 	}
   }
   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
 	.look-title{
-		z-index: 1000;
+		z-index: 5;
 	}
   }
   .look-composition{
@@ -3098,20 +3098,242 @@ form.custom {
 		border: none;
 	}
   }
-  #lightbox ul {
-	height: 91%;
-	overflow-y: auto;
-	overflow-x: hidden;
-  }
-  #lightbox ul  li{
-	margin-top: 12px;
-	width: 100px;
-  }
-  @-moz-document url-prefix() {
+  /* --- Lightbox + iosSlider--- */
 	#lightbox ul {
-		height: 90.5%;
+	height: 91%;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
-  }
+	#lightbox ul  li{
+		margin-top: 12px;
+		width: 100px;
+	}
+	@-moz-document url-prefix() {
+		#lightbox ul {
+			height: 90.5%;
+		}
+	}
+	 .slider .item img {
+		float: center;
+		max-width: 50%;
+		margin: 10px;
+		margin-left: 5%;
+		-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+		-moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+		box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+	}
+	.item img:hover {
+		-webkit-filter: brightness(0.25);
+		-moz-filter: brightness(0.25);
+		filter: brightness(0.25);
+		opacity: 0.8;
+	}
+
+	#lightbox {
+		position:fixed; /* keeps the lightbox window in the current viewport */
+		top:0; 
+		left:0; 
+		width:100%; 
+		height:100%; 
+		background:url(../img/overlay.png) repeat; 
+		text-align:center;
+		z-index: 100;
+	}
+	.lightbox-exit p{
+		position: absolute;
+		top: 3%;
+		right: 22.5%;
+		text-align:right; 
+		color:#58ACFA; 
+		height: 27px;
+		font-size:48px;
+		z-index: 1000;	
+	}
+	#lightbox iframe {
+		float: left;
+		margin-top: 12px;
+		box-shadow:0 0 25px #111;
+		-webkit-box-shadow:0 0 25px #111;
+		-moz-box-shadow:0 0 25px #111;
+		z-index: 1001;
+		width: 62.5%;
+		height: 89.3%;
+	}
+	#lightbox ul li img:hover{
+		-webkit-filter: brightness(0.25);
+		-moz-filter: brightness(0.25);
+		filter: brightness(0.25);
+		opacity: 0.8;
+	}
+	.active {
+		background-color: #ffffff;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff)); /* Chrome, Safari 4+ */
+		background-image: -webkit-linear-gradient(top, #ffffff, #ffffff); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+		background-image: -moz-linear-gradient(top, #ffffff, #ffffff); /* Firefox 3.6-15 */
+		background-image: -o-linear-gradient(top, #ffffff, #ffffff); /* Opera 11.10-12.00 */
+		background-image: linear-gradient(to bottom, #ffffff, #ffffff); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */ 
+		opacity: 1;
+	}
+	.notActive{
+		background-color: #8f8f8f;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(#8f8f8f), to(#c7c7c7)); /* Chrome, Safari 4+ */
+		background-image: -webkit-linear-gradient(top, #8f8f8f, #c7c7c7); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+		background-image: -moz-linear-gradient(top, #8f8f8f, #c7c7c7); /* Firefox 3.6-15 */
+		background-image: -o-linear-gradient(top, #8f8f8f, #c7c7c7); /* Opera 11.10-12.00 */
+		background-image: linear-gradient(to bottom, #8f8f8f, #c7c7c7); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */ 
+		opacity: 0.6;
+	}
+
+	#content {
+		margin-left: 27%;
+		margin-top: 2%;
+		z-index: 10;
+	}
+	.clearing-thumbs-lightbox{
+		margin-left: 24% !important;
+		margin-top: 1.99% !important;
+		margin-bottom: 5% !important;
+		float: left;
+		display: inline-block;
+		width: 100px;
+		z-index: 100;
+		overflow: auto;	
+	}
+
+	/* -- Mobile -- */
+	@media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
+		#lightbox iframe {
+			margin-top: 10px;
+			box-shadow:0 0 25px #111;
+			-webkit-box-shadow:0 0 25px #111;
+			-moz-box-shadow:0 0 25px #111;
+			z-index: 1001;
+			width: 100%;
+			height: 80%;
+			margin-bottom: 10px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+		}
+		#content {
+			margin-left: 0px;
+			width: 100%;
+		}
+		.clearing-thumbs-lightbox {
+			display: none;
+		}
+		.lightbox-exit{
+			text-align:right; 
+			color:#fff; 
+			padding: 2% 2% 0 95%;
+			margin-bottom: -20px;
+			height: 27px;
+			font-size:32px;
+			z-index: 1000;	
+		}
+		.lightbox-exit p{
+			top: 10%;
+			left: 85%;
+			font-size:48px;
+		}
+	}
+	/* -- Mobile: Landscape -- */
+	@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation: landscape) { 
+		#lightbox {
+			height: 100%;
+			width: 100%;	
+		}
+		#lightbox iframe {
+			margin-top: 10px;
+			box-shadow:0 0 25px #111;
+			-webkit-box-shadow:0 0 25px #111;
+			-moz-box-shadow:0 0 25px #111;
+			z-index: 1001;
+			width: 100%;
+			height: 69.5%;
+			margin-bottom: 10px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			-webkit-overflow-scrolling: touch;
+		}
+		#content {
+			margin-left: 0px;
+			width: 100%;
+		}
+		.lightbox-exit p{
+			top: 15%;
+			right: 5%;
+			font-size:48px;
+		}
+	}
+
+	/* -- iPad all Gens -- */
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
+		#lightbox iframe {
+			display: inline-block;
+			float: left;
+			margin-top: 12px;
+			box-shadow:0 0 25px #111;
+			-webkit-box-shadow:0 0 25px #111;
+			-moz-box-shadow:0 0 25px #111;
+			z-index: 1001;
+			width: 90%;
+			height: 90.2%;
+		}
+		#content {
+			margin-left: 20%;
+			margin-top: 5%;
+			z-index: 10;
+		}
+		.clearing-thumbs-lightbox {
+			margin-top: 5% !important;
+			margin-left: 7% !important;
+			float: left;
+			display: inline-block;
+			width: 100px;
+			z-index: 100;
+			overflow: auto;	
+		}
+		.lightbox-exit p{
+			top: 5%;
+			left: 86%;
+			font-size:48px;
+		}
+	}
+	/* -- iPad all Gens : Landscape -- */
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+		#lightbox iframe {
+			height: 86.4%;
+		}
+		#content {
+			margin-top: 4%;
+			margin-left: 7%;
+		}
+		.clearing-thumbs-lightbox {
+			margin-top: 4% !important;	
+			margin-left: 3% !important;
+			overflow: auto;
+		}
+		.lightbox-exit p{
+			top: 7%;
+			left: 91%;
+		}
+	}
+	/* -- Firefox -- */
+	@-moz-document url-prefix() {
+		#lightbox iframe {
+			margin-top: 15px;
+			width: 62.5%;
+			height: 650px;
+		}
+		.lightbox-exit p{
+			right: 21.5%;
+		}
+		.clearing-thumbs-lightbox {
+			margin-top: 2.2% !important;
+		}
+	}
+  /* --- END Lightbox + iosSlider --- */
   #product-page{
     padding-top: 54px;
     margin-bottom: 10px;
@@ -6086,7 +6308,7 @@ a.th {
       bottom: 0;
       height:44px;
       background: white;
-      z-index: 98;
+      z-index: 101;
       transition: .2s ease-in-out all;
       -webkit-transition: .2s ease-in-out all;
       -moz-transition: .2s ease-in-out all;
@@ -8163,3 +8385,5 @@ a.th {
   -webkit-overflow-scrolling: touch;
   border: none;
 }
+
+/* ---- iosSlider ---- */
