@@ -5281,6 +5281,9 @@ ul.pagination {
   border: 1px solid #ebebeb;
   z-index: 0;
 }
+.video-img {
+  margin-left: 10px;	
+}
 .artist-video-btn .video-title{
   padding-left: 15px;
   line-height: 18px;

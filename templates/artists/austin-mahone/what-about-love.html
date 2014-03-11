@@ -160,7 +160,7 @@
 							
 							<div class = 'item' onclick="">
 								<img id="item-15" src = '../../../static/img/music/artists/austin-mahone/what-about-love/item-15.png' class="lightbox_trigger"/>
-							</div> 
+							</div>
 
 					</div>
 					<div class="prev" style="cursor: pointer;"></div>
@@ -311,20 +311,20 @@
 					desktopClickDrag: true,
 					snapToChildren: true
 				});
+				
 				$('.short-width-slider-2').each(function() {
-
 					$(this).iosSlider({
-						scrollbar: false,
-						desktopClickDrag: true,
-						snapToChildren: true,
-						infiniteSlider: true,
-						navNextSelector: $(this).find('.next'),
-						navPrevSelector: $(this).find('.prev'),
-						horizontalSlideLockThreshold: 10,
-						verticalSlideLockThreshold: 15
-					});
-
+							scrollbar: false,
+							desktopClickDrag: true,
+							snapToChildren: true,
+							infiniteSlider: false,
+							navNextSelector: $(this).find('.next'),
+							navPrevSelector: $(this).find('.prev'),
+							horizontalSlideLockThreshold: 10,
+							verticalSlideLockThreshold: 15
+					});		
 				});
+				
 
 				var mobile = navigator.userAgent.match(/iPhone|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
