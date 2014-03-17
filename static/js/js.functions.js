@@ -34,7 +34,7 @@ $(document).ready(function(){
 		$(".artist-name").wrapInner("<h5></h5>");
 		
 		//Artist.html page
-		$(".row.artist-video-list").wrapInner("<ul class='medium-block-grid-4 large-block-grid-6'  id='grid' style='width: 100.1%;'></ul>");
+		$(".row.artist-video-list").wrapInner("<ul class='medium-block-grid-4 large-block-grid-6'  id='grid' style='width: 100.1%;margin-bottom: 15%;'></ul>");
 		
 		$(".four.columns.artist-video-btn").removeClass("four columns artist-video-btn").addClass("centred").wrap("<li class='element'></li>").prepend("<img class='shop-icon' src='../../../static/img/icons/shop-icon-small.png' style='width: 55px; height: 55px;' />");
 		
