@@ -61,7 +61,7 @@
       </nav>
 
       <div class="spinner-wrap"><div id="spinner"><img src="../../../static/img/spinner.gif"></div></div>
-      <div class="main-container" style="background: #D4D4D4;">
+      <div class="main-container">
         <div class="row banner-row">
           <div class="twelve columns video-container">
             <div class="page-container">
@@ -332,7 +332,6 @@
 					});
 				});
 				function slideChange(args) {
-					console.log(args.settings.navNextSelector);
 					
 					args.settings.navNextSelector.css({opacity: '1'});
 					args.settings.navPrevSelector.css({opacity: '1'});
@@ -348,11 +347,12 @@
 							args.settings.navNextSelector.css({opacity: '0.2'});
 						}
 					} else {
+						console.log('slide:' +args.currentSlideNumber+' out of: '+args.data.numberOfSlides);
 						if(args.currentSlideNumber == 1) {
 					
 						args.settings.navPrevSelector.css({opacity: '0.2'});
 						
-						} else if(args.data.numberOfSlides - args.currentSlideNumber <= 3) {
+						} else if(args.data.numberOfSlides - args.currentSlideNumber <= 5) {
 						
 							args.settings.navNextSelector.css({opacity: '0.2'});
 						}
@@ -362,8 +362,6 @@
 
 				var mobile = navigator.userAgent.match(/iPhone|Android|Windows Phone|BlackBerry/i);
 				if(mobile){
-					//$('.short-width-slider-2').css('padding-left', '45%');
-					//$('.short-width-slider-2').css('width', '95%');
 					$('iframe').css('height','200px');
 					$('clearing-thumbs').css('display', 'none');
 				} 

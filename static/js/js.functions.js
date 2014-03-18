@@ -40,6 +40,9 @@ $(document).ready(function(){
 		
 		$(".video-title").removeClass("video-title").addClass("artist-name");
 		//$(".video-title").wrapInner("<h5></h5>");
+		
+		//Tweaks for Purely Desktop Version
+		$('a.back-btn').css('display','none');
 	}
 
 	$(document).foundation(); 
